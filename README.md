@@ -1,5 +1,5 @@
 <pre>
-Precompiled proxmark3 firmware with the HF emulator removed from standalone mode and replaced by the LF standalone emulator
+Precompiled proxmark3 firmware with the HF emulator removed from standalone mode and replaced by the LF standalone emulator and LF standalone cloner
 Most current version of this repo available at: http://exploit.agency/sploit/proxmark3_with-LF_standalone
 
 This is also the most up to date firmware as of this posting(only mod was removing the HF standalone mode from the makefile thus gaining the LF mode)
@@ -38,6 +38,6 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 export PATH=${PATH}:${DEVKITARM}/bin
 make
 
-Instructions for using LF standalone emulation mode on the elechouse RDV2 version of the proxmark3 can be found at:
+Instructions for using LF standalone emulation/cloning mode on the elechouse RDV2 version of the proxmark3 can be found at:
 https://legacysecuritygroup.com/index.php/categories/9-rfid/7-proxmark-3-emulating-hid-tags-in-standalone-mode
 </pre>
