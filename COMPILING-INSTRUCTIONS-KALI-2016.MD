@@ -15,7 +15,7 @@ Open a terminal and type:
 apt-get install libusb-1.0-0-dev libreadline-dev libreadline6 lua5.3 libncurses5-dev libusb-dev
 Hit "y" and press enter for yes when prompted
 Download devkitARM_r45-x86_64-linux.tar.bz2 from:
-https://sourceforge.net/projects/devkit … itARM_r45/
+http://sourceforge.net/projects/devkitpro/files/devkitARM
 Also download the proxmark3 repo as a zip file.
 https://github.com/Proxmark/proxmark3
 Use the file manager and browse to Downloads and right click devkitARM_r45-x86_64-linux.tar.bz2  and then click extract here and then do the same for proxmark3-master.zip .
