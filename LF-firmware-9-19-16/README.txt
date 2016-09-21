@@ -1,5 +1,5 @@
 <pre>
-This is the "modded" firmware with standalone LF emulation enabled.
+This is the "modded" firmware with standalone LF emulation and standalone cloning enabled.
 Dated: 9-19-2016
 Commit: 41f08b7c08928060a8dd84916fddf294fab7f26c
 
