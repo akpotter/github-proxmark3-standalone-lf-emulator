@@ -21,22 +21,10 @@ If the flash utilities I included are missing any dependencies you can download 
 http://www.proxmark.org/forum/viewtopic.php?id=1562
 Replace /firmware_win/fullimage.elf with the fullimage LF version and /firmware_win/bootrom.elf with the bootrom LF version
 
-Also if you want to compile the firmware yourself with LF standalone emulation mode enabled you can get the latest firmware from:
-https://github.com/Proxmark/proxmark3
-Compiling instructions taken from: https://github.com/Proxmark/proxmark3/blob/master/COMPILING.txt
-"A precompiled DevKitARM cross compiler tool chain package can be found at 
-http://sourceforge.net/projects/devkitpro/files/devkitARM
-Select the one you need (32bit or 64bit) and unpack to a convinient place, eg 
-$HOME/proxmark3/. It will create a devkitARM/ subdirectory."
-clone/extract to $HOME/proxmark3
+Also if you want to compile the firmware yourself with LF standalone emulation mode enabled:
+Follow general compiling instructions listed in COMPILING-INSTRUCTIONS-KALI-2016.MD plus modify the makefile
 Modify /armsrc/Makefile
 On line 13 remove "-DWITH_ISO14443a_StandAlone"
-cd to $HOME/proxmark3
-Set Environment:
-export DEVKITPRO=$HOME/proxmark3/
-export DEVKITARM=$DEVKITPRO/devkitARM
-export PATH=${PATH}:${DEVKITARM}/bin
-make
 
 Instructions for using LF standalone emulation/cloning mode on the elechouse RDV2 version of the proxmark3 can be found at:
 https://legacysecuritygroup.com/index.php/categories/9-rfid/7-proxmark-3-emulating-hid-tags-in-standalone-mode
