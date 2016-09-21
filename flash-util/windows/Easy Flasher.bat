@@ -11,7 +11,7 @@ echo Find the com port that your proxmark3 is connected to.
 echo Settings -^> Devices -^> Connected Devices
 echo or Windows Key X ^+ Device Manager -^> Ports ^(COM ^& LPT^)
 echo -
-set /P comnumber=Enter the com port that your proxmark3 is connected to: 
+set /P comnumber=Enter the com port number that your proxmark3 is connected to: ^(Example:Type 18 for Com18^) 
 echo You entered: COM%comnumber%
 pause
 
