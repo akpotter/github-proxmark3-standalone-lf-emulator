@@ -8,13 +8,7 @@ It records a valid LF tag(maybe a guest badge) to Bank1(what I used to call Bank
 
 Flash the bootloader and fullimage elf files.
 
-Instructions for use with elechouse proxmark3 RDV2:
-Hold button until lights flash and release.
-C stays lit.
-Short press button: C&B are lit
-Short press button: only A is lit
-Hold button until A&D light up
-Scan a valid card
-Short press button: B&C&A stay lit
-It is now brute forcing the keyspace starting with the scanned card and decrimenting the hex values until you find a new valid card
+
+Instructions for using LF standalone proxbrute mode on the elechouse RDV2 and standard version of the proxmark3 can be found at:
+https://legacysecuritygroup.com/index.php/categories/9-rfid/7-proxmark-3-emulating-hid-tags-in-standalone-mode
 </pre>
