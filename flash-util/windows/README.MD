@@ -1,11 +1,4 @@
 <pre>
-Precompiled proxmark3 firmware with HF emulator removed
-
-Now defaults back to the original LF emulator when in standalone mode
-
-firmware dated 9-19-2016
-commit 41f08b7c08928060a8dd84916fddf294fab7f26c
-
 Run "Easy Flasher.bat"
 Follow menu prompts
 Flash bootrom then fullimage
