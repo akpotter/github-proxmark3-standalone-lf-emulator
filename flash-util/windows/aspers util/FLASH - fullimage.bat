@@ -26,7 +26,7 @@ echo                 ======================================
 echo                 FLASHING fullimage.elf, please wait...
 echo                 ======================================
 echo.
-flasher.exe com17 -b ..\..\..\LF-firmware-9-19-16\fullimage.elf
+..\flasher.exe com18 -b ..\..\..\firmware\LF-standalone-firmware\fullimage.elf
 
 pause.
 

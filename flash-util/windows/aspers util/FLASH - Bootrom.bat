@@ -40,7 +40,7 @@ echo                 ====================================
 echo                 FLASHING bootrom.elf, please wait...
 echo                 ====================================
 echo.
-flasher.exe com17 -b ..\..\..\LF-firmware-9-19-16\bootrom.elf
+..\flasher.exe com18 -b ..\..\..\firmware\LF-standalone-firmware\bootrom.elf
 
 pause.
 

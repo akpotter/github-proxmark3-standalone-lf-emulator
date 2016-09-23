@@ -34,40 +34,62 @@ cls
 echo -
 echo Select a bootrom:
 echo -
-echo ^(1^)Stock v2.5 HF Standalone bootrom
-echo      "stock-HF-emulator-firmware-v2.5\bootrom.elf"
-echo ^(2^)HID LF Standalone Emulation/Cloning bootrom
-echo      "LF-firmware-9-19-16\bootrom.elf"
+echo ^(1^)Stock HF Standalone bootrom
+echo      "stock-HF-standalone-firmware\bootrom.elf"
+echo ^(2^)LF Standalone Emulation/Cloning bootrom
+echo      "LF-standalone-firmware\bootrom.elf"
 echo ^(3^)Proxbrute with updated cdc bootrom
 echo      "proxbrute-w-cdc-firmware\bootrom.elf"
-echo ^(4^)Return to Main Menu
+echo ^(4^)Iceman Fork bootrom
+echo      "iceman-fork\bootrom.elf"
+echo ^(5^)Custom user defined bootrom
+echo      "custom-user-defined\bootrom.elf"
+echo ^(0^)Return to Main Menu
 echo -
-SET /P Menu=Type 1, 2, 3, or 4 then press ENTER:
+SET /P Menu=Type 1, 2, 3, 4, 5, or 0 then press ENTER:
 IF %Menu%==1 GOTO STOCKBOOTROM
 IF %Menu%==2 GOTO LFBOOTROM
 IF %Menu%==3 GOTO PROXBRUTEBOOTROM
-IF %Menu%==4 GOTO MENU
+IF %Menu%==4 GOTO ICEMANBOOTROM
+IF %Menu%==5 GOTO CUSTOMBOOTROM
+IF %Menu%==0 GOTO MENU
 :STOCKBOOTROM
 cls
-echo Press ENTER to flash stock v2.5 bootrom
+echo Press ENTER to flash stock bootrom
 pause
-flasher.exe com%comnumber% -b ..\..\stock-HF-emulator-firmware-v2.5\bootrom.elf
+flasher.exe com%comnumber% -b ..\..\firmware\stock-HF-standalone-firmware\bootrom.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
 :LFBOOTROM
 cls
-echo Press ENTER to flash HID LF standalone mode bootrom
+echo Press ENTER to flash LF standalone mode bootrom
 pause
-flasher.exe com%comnumber% -b ..\..\LF-firmware-9-19-16\bootrom.elf
+flasher.exe com%comnumber% -b ..\..\firmware\LF-standalone-firmware\bootrom.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
 :PROXBRUTEBOOTROM
 cls
-echo Press ENTER to proxbrute with updated cdc bootrom
+echo Press ENTER to flash proxbrute with updated cdc bootrom
 pause
-flasher.exe com%comnumber% -b ..\..\proxbrute-w-cdc-firmware\bootrom.elf
+flasher.exe com%comnumber% -b ..\..\firmware\proxbrute-w-cdc-firmware\bootrom.elf
+echo Press ENTER to return to Main Menu
+pause
+goto MENU
+:ICEMANBOOTROM
+cls
+echo Press ENTER to flash Iceman Fork bootrom
+pause
+flasher.exe com%comnumber% -b ..\..\firmware\iceman-fork\bootrom.elf
+echo Press ENTER to return to Main Menu
+pause
+goto MENU
+:CUSTOMBOOTROM
+cls
+echo Press ENTER to flash custom user defined bootrom
+pause
+flasher.exe com%comnumber% -b ..\..\firmware\custom-user-defined\bootrom.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
@@ -77,32 +99,38 @@ cls
 echo -
 echo Select a fullimage:
 echo -
-echo ^(1^)Stock v2.5 HF Standalone fullimage
-echo      "stock-HF-emulator-firmware-v2.5\fullimage.elf"
-echo ^(2^)HID LF Standalone Emulation/Cloning fullimage
-echo      "LF-firmware-9-19-16\fullimage.elf"
+echo ^(1^)Stock HF Standalone fullimage
+echo      "stock-HF-standalone-firmware\fullimage.elf"
+echo ^(2^)LF Standalone Emulation/Cloning fullimage
+echo      "LF-standalone-firmware\fullimage.elf"
 echo ^(3^)Proxbrute with updated cdc fullimage
 echo      "proxbrute-w-cdc-firmware\fullimage.elf"
-echo ^(4^)Return to Main Menu
+echo ^(4^)Iceman Fork fullimage
+echo      "iceman-fork\fullimage.elf"
+echo ^(5^)Custom user defined fullimage
+echo      "custom-user-defined\fullimage.elf"
+echo ^(0^)Return to Main Menu
 echo -
-SET /P Menu=Type 1, 2, 3, or 4 then press ENTER:
+SET /P Menu=Type 1, 2, 3, 4, 5, or 0 then press ENTER:
 IF %Menu%==1 GOTO STOCKIMAGE
 IF %Menu%==2 GOTO LFIMAGE
 IF %Menu%==3 GOTO PROXBRUTEIMAGE
-IF %Menu%==4 GOTO MENU
+IF %Menu%==4 GOTO ICEMANIMAGE
+IF %Menu%==5 GOTO CUSTOMIMAGE
+IF %Menu%==0 GOTO MENU
 :STOCKIMAGE
 cls
-echo Press ENTER to flash stock v2.5 fullimage
+echo Press ENTER to flash stock fullimage
 pause
-flasher.exe com%comnumber% -b ..\..\stock-HF-emulator-firmware-v2.5\fullimage.elf
+flasher.exe com%comnumber% -b ..\..\firmware\stock-HF-standalone-firmware\fullimage.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
 :LFIMAGE
 cls
-echo Press ENTER to flash HID LF standalone mode fullimage
+echo Press ENTER to flash LF standalone mode fullimage
 pause
-flasher.exe com%comnumber% -b ..\..\LF-firmware-9-19-16\fullimage.elf
+flasher.exe com%comnumber% -b ..\..\firmware\LF-standalone-firmware\fullimage.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
@@ -110,7 +138,23 @@ goto MENU
 cls
 echo Press ENTER to flash proxbrute with updated cdc bootloader fullimage
 pause
-flasher.exe com%comnumber% -b ..\..\proxbrute-w-cdc-firmware\fullimage.elf
+flasher.exe com%comnumber% -b ..\..\firmware\proxbrute-w-cdc-firmware\fullimage.elf
+echo Press ENTER to return to Main Menu
+pause
+goto MENU
+:ICEMANIMAGE
+cls
+echo Press ENTER to flash Iceman Fork fullimage
+pause
+flasher.exe com%comnumber% -b ..\..\firmware\iceman-fork\fullimage.elf
+echo Press ENTER to return to Main Menu
+pause
+goto MENU
+:CUSTOMIMAGE
+cls
+echo Press ENTER to flash custom user defined fullimage
+pause
+flasher.exe com%comnumber% -b ..\..\firmware\custom-user-defined\fullimage.elf
 echo Press ENTER to return to Main Menu
 pause
 goto MENU
