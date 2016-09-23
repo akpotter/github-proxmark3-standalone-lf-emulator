@@ -66,6 +66,10 @@ void WriteTItag(uint32_t idhi, uint32_t idlo, uint16_t crc);
 void AcquireTiType(void);
 void AcquireRawBitsTI(void);
 void SimulateTagLowFrequency(int period, int gap, int ledcontrol);
+// ProxBrute - created this function so that i didnt mess with anything
+//             important - needed to only send a couple tags then goto next
+void SimulateTagLowFrequencyProxBrute(int period, int gap, int ledcontrol);
+void CmdHIDsimTAGProxBrute(int hi, int lo, int ledcontrol);
 void SimulateTagLowFrequencyBidir(int divisor, int max_bitlen);
 void CmdHIDsimTAG(int hi, int lo, int ledcontrol);
 void CmdFSKsimTAG(uint16_t arg1, uint16_t arg2, size_t size, uint8_t *BitStream);

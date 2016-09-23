@@ -439,6 +439,70 @@ void SimulateTagLowFrequency(int period, int gap, int ledcontrol)
 	}
 }
 
+
+// ProxBrute - created this function so that i didnt mess with anything
+// 	       important - needed to only send a set number of tags
+void SimulateTagLowFrequencyProxBrute(int period, int gap, int ledcontrol)
+{
+        int i;
+	int x=0;
+        uint8_t *tab = BigBuf_get_addr();
+
+	FpgaDownloadAndGo(FPGA_BITSTREAM_LF);
+	FpgaWriteConfWord(FPGA_MAJOR_MODE_LF_EDGE_DETECT);
+
+        AT91C_BASE_PIOA->PIO_PER = GPIO_SSC_DOUT | GPIO_SSC_CLK;
+
+        AT91C_BASE_PIOA->PIO_OER = GPIO_SSC_DOUT;
+        AT91C_BASE_PIOA->PIO_ODR = GPIO_SSC_CLK;
+
+#define SHORT_COIL()    LOW(GPIO_SSC_DOUT)
+#define OPEN_COIL()             HIGH(GPIO_SSC_DOUT)
+
+        i = 0;
+	x = 0;
+        for(;;) {
+                while(!(AT91C_BASE_PIOA->PIO_PDSR & GPIO_SSC_CLK)) {
+			
+                        if(BUTTON_PRESS() || x == 20000 ) {
+                                DbpString("Stopped");
+                                return;
+                        }
+                        WDT_HIT();
+                }
+
+                if (ledcontrol)
+                        LED_D_ON();
+
+                if(tab[i])
+                        OPEN_COIL();
+                else
+                        SHORT_COIL();
+
+                if (ledcontrol)
+                        LED_D_OFF();
+
+                while(AT91C_BASE_PIOA->PIO_PDSR & GPIO_SSC_CLK) {
+                        if(BUTTON_PRESS() || x == 20000 ) {
+                                DbpString("Stopped");
+                                return;
+                        }
+                        WDT_HIT();
+                }
+		x++;
+                i++;
+                if(i == period) {
+                        i = 0;
+                        if (gap) {
+                                SHORT_COIL();
+                                SpinDelayUs(gap);
+                        }
+                }
+        }
+}
+
+
+
 #define DEBUG_FRAME_CONTENTS 1
 void SimulateTagLowFrequencyBidir(int divisor, int t0)
 {
@@ -757,6 +821,64 @@ void CmdPSKsimTag(uint16_t arg1, uint16_t arg2, size_t size, uint8_t *BitStream)
 	SimulateTagLowFrequency(n, 0, ledcontrol);
 	if (ledcontrol) LED_A_OFF();
 }
+
+
+// ProxBrute - I know this is rediculous to do this
+void CmdHIDsimTAGProxBrute(int hi, int lo, int ledcontrol)
+{
+        int n=0, i=0;
+        /*
+         HID tag bitstream format
+         The tag contains a 44bit unique code. This is sent out MSB first in sets of 4 bits
+         A 1 bit is represented as 6 fc8 and 5 fc10 patterns
+         A 0 bit is represented as 5 fc10 and 6 fc8 patterns
+         A fc8 is inserted before every 4 bits
+         A special start of frame pattern is used consisting a0b0 where a and b are neither 0
+         nor 1 bits, they are special patterns (a = set of 12 fc8 and b = set of 10 fc10)
+        */
+
+        if (hi>0xFFF) {
+                DbpString("Tags can only have 44 bits.");
+                return;
+        }
+        fc(0,&n);
+        // special start of frame marker containing invalid bit sequences
+        fc(8,  &n);     fc(8,  &n);     // invalid
+        fc(8,  &n);     fc(10, &n); // logical 0
+        fc(10, &n);     fc(10, &n); // invalid
+        fc(8,  &n);     fc(10, &n); // logical 0
+
+        WDT_HIT();
+        // manchester encode bits 43 to 32
+        for (i=11; i>=0; i--) {
+                if ((i%4)==3) fc(0,&n);
+                if ((hi>>i)&1) {
+                        fc(10, &n);     fc(8,  &n);             // low-high transition
+                } else {
+                        fc(8,  &n);     fc(10, &n);             // high-low transition
+                }
+        }
+
+        WDT_HIT();
+        // manchester encode bits 31 to 0
+        for (i=31; i>=0; i--) {
+                if ((i%4)==3) fc(0,&n);
+                if ((lo>>i)&1) {
+                        fc(10, &n);     fc(8,  &n);             // low-high transition
+                } else {
+                        fc(8,  &n);     fc(10, &n);             // high-low transition
+                }
+        }
+
+        if (ledcontrol)
+                LED_A_ON();
+        SimulateTagLowFrequencyProxBrute(n, 0, ledcontrol);
+
+        if (ledcontrol)
+                LED_A_OFF();
+}
+
+
 
 // loop to get raw HID waveform then FSK demodulate the TAG ID from it
 void CmdHIDdemodFSK(int findone, int *high, int *low, int ledcontrol)

