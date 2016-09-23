@@ -1,4 +1,6 @@
 <pre>
+Most current version can be found at: http://exploit.agency/sploit/proxmark3_with-LF_standalone
+
 This is a collection of precompiled firmware for the Proxmark3.
 The version number of each firmware can be found in /firmware/WHATEVER-FIRMWARE/README.MD
 
