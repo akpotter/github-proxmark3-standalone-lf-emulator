@@ -3,7 +3,7 @@ cls
 echo Flash utility inspired by aspers.
 echo -
 echo Easy Flasher
-echo Written by:
+echo Written by Corey Harding:
 echo www.legacysecuritygroup.com
 echo www.exploit.agency
 echo -
