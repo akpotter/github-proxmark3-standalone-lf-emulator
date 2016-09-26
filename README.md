@@ -1,3 +1,4 @@
+This repository is maintained by Corey Harding from http://www.LegacySecurityGroup.com<br><br>
 This is a collection of precompiled firmware for the Proxmark3.<br>
 Most current version of this repo can always be found at: http://exploit.agency/sploit/proxmark3_with-LF_standalone/<br>
 The version number of each firmware can be found in /firmware/WHATEVER-FIRMWARE/README.MD<br>
