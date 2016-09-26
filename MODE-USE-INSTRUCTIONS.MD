@@ -41,6 +41,15 @@ Scan a valid card
 Short press button: B&C&A stay lit 
 It is now brute forcing the keyspace starting with the scanned card and decrimenting the hex values until you find a new valid card
 
+Instructions for Matty's Mifare Standalone with elechouse proxmark3 RDV2:
+Hold card up to antenna.
+Long press button.
+A&D light and B flashes if card is held to antenna.
+Wait for A&D to go off and B will stay lit.
+Mifare card is now being simulated.
+Press button again to clone the card to a chinese magic card.
+Note: If C stays lit then the keys were not found and tag can not be simulated.
+Try holding tag over antenna before pressing the button and try again.
 
 Standard proxmark3
 -
@@ -70,4 +79,14 @@ Hold button until Orange&Red2 light up
 Scan a valid card 
 Short press button: Green&Red1&Orange stay lit 
 It is now brute forcing the keyspace starting with the scanned card and decrimenting the hex values until you find a new valid card
+
+Instructions for Matty's Mifare Standalone with standard proxmark3:
+Hold card up to antenna.
+Long press button.
+Orange&Red2 light and Green flashes if card is held to antenna.
+Wait for Orange&Red2 to go off and Green will stay lit.
+Mifare card is now being emulated.
+Press button again to clone the card to a chinese magic card.
+Note: If Red1 stays lit then the keys were not found and tag can not be simulated.
+Try holding tag over antenna before pressing the button and try again.
 </pre>
