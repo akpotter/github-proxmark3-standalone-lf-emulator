@@ -1,16 +1,21 @@
+This repository is maintained by Corey Harding from http://www.LegacySecurityGroup.com<br><br>
 This is a collection of precompiled firmware for the Proxmark3.<br>
-Most current version of this repo can always be found at: http://exploit.agency/sploit/proxmark3_with-LF_standalone/<br>
 The version number of each firmware can be found in /firmware/WHATEVER-FIRMWARE/README.MD<br>
 <br>
 Included Firmware:<br>
 1)Stock firmware with HF standalone mode<br>
 2)"Modded" firmware with LF standalone emulation/cloning<br>
 3)Proxbrute ported to the new CDC bootloader/current firmware(Standalone Brute Forcer)<br>
-4)Iceman's Fork(Playground for new stuff)<br>
-5)Custom User Defined Firmware(Put your firmware in this folder)<br>
+4)Mattys Mifare Standalone Mode<br>
+5)Iceman's Fork<br>
+6)Marshmellow's Fork<br>
+7)Custom User Defined Firmware(Put your firmware in this folder)<br>
 <br>
 I recommend using the Windows "Easy Flasher" tool I wrote for switching between firmware.<br>
 Although I have also included a precompiled linux version of the flasher as well for 64bit Debian machines(Kali 2016).<br>
+<br>
+Firmware specific client's may be found bundled in the corresponding firmware's folder.  They are compiled for Kali 2016 64bit.  There is also the Windows GUI client included at /firmware/official-firmware-with-client/win32
+<br>
 <br>
 If the flash utilities I included are missing any dependencies you can download the precompiled Windows client from: http://www.proxmark.org/forum/viewtopic.php?id=1562 When using tool from link replace /firmware_win/fullimage.elf with the fullimage WHATEVER version and /firmware_win/bootrom.elf with the bootrom WHATEVER version from this repo<br>
 <br>
