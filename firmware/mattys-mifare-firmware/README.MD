@@ -1,10 +1,7 @@
-<pre>
-Matty's Firmware
-Standalone mode for the attack and simulation of mifare cards.
-https://github.com/mattaereal/proxmark3
-Compiled on 9-26-2016
-Commit: 2e1cfe34b14d57a535d3198eacfa2711dc28adda
-
-Right now the code does the following:
-"Holding the button for a few secs will scan the tag with hardcoded keys in memory. Once it's scanned, pressed again it will start emulating the tag with the sectors that were able to be dumped into memory, like a live clone, and finally if you press again it will dump all the information that was obtained from the tag into a blank/magic card. Basically a clone."
-</pre>
+Matty's Firmware<br>
+Standalone mode for the attack and simulation of mifare cards.<br>
+https://github.com/mattaereal/proxmark3<br>
+Compiled on 9-26-2016<br>
+Commit: 2e1cfe34b14d57a535d3198eacfa2711dc28adda<br>
+<br>
+https://translate.googleusercontent.com/translate_c?depth=1&hl=en&inter=1&nv=1&rurl=translate.google.com&sl=auto&tl=en&u=https://docs.google.com/document/d/1lHctGQwNjHQTg8i3rNCxJynFj9qMTAGL8ZpwzWlCzvg/mobilebasic&usg=ALkJrhgjhPMM3aWleJ9jwTW_vpFpwQw_8w
