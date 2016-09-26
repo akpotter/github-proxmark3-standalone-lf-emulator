@@ -6,7 +6,7 @@ Included Firmware:<br>
 1)Stock firmware with HF standalone mode<br>
 2)"Modded" firmware with LF standalone emulation/cloning<br>
 3)Proxbrute ported to the new CDC bootloader/current firmware(Standalone Brute Forcer)<br>
-4)Mattys Mifare Standalone Mode<br>
+4)Matty's Mifare Standalone Mode<br>
 5)Iceman's Fork<br>
 6)Marshmellow's Fork<br>
 7)Custom User Defined Firmware(Put your firmware in this folder)<br>
