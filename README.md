@@ -12,9 +12,9 @@ Included Firmware:<br>
 7)Custom User Defined Firmware(Put your firmware in this folder)<br>
 <br>
 I recommend using the Windows "Easy Flasher" tool I wrote for switching between firmware.<br>
-Although I have also included a precompiled linux version of the flasher as well for 64bit Debian machines(Kali 2016).<br>
+Although I have also included a precompiled linux version of the flasher as well for 64bit Debian machines(Kali Rolling-Edition).<br>
 <br>
-Firmware specific client's may be found bundled in the corresponding firmware's folder.  They are compiled for Kali 2016 64bit.  There is also the Windows GUI client included at /firmware/official-firmware-with-client/win32
+Firmware specific client's may be found bundled in the corresponding firmware's folder.  They are compiled for Kali Rolling-Edition 64bit.  There is also the Windows GUI client included at "\firmware\official-firmware-with-client\win32\Proxmark Tool.exe"
 <br>
 <br>
 If the flash utilities I included are missing any dependencies you can download the precompiled Windows client from: http://www.proxmark.org/forum/viewtopic.php?id=1562 When using tool from link replace /firmware_win/fullimage.elf with the fullimage WHATEVER version and /firmware_win/bootrom.elf with the bootrom WHATEVER version from this repo<br>
