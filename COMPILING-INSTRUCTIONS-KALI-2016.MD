@@ -1,3 +1,6 @@
+Deprecated! For the simplest compiling instructions please see the proxmark3 wiki article I wrote:<br>
+Official: https://github.com/Proxmark/proxmark3/wiki/Kali%20Linux <br>
+Mirror: https://github.com/exploitagency/github-proxmark3-standalone-lf-emulator/wiki <br>
 <pre>
 Short write up I did for the proxmark forum
 http://www.proxmark.org/forum/viewtopic.php?pid=23979
